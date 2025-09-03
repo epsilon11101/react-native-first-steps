@@ -12,13 +12,19 @@ interface FABProps extends PressableProps {
 }
 
 const FAB: FC<FABProps> = ({ title, style: clientStyle, ...rest }) => {
-  const styles =
-    typeof clientStyle === "function"
-      ? (state: PressableStateCallbackType) => [style.fab, clientStyle(state)]
-      : [style.fab, clientStyle];
+  const combinedStyle = (state: PressableStateCallbackType) => {
+    const evaluatedClientStyle =
+      typeof clientStyle === "function" ? clientStyle(state) : clientStyle;
+
+    return [
+      style.fab,
+      evaluatedClientStyle,
+      { opacity: state.pressed ? 0.5 : 1 },
+    ];
+  };
 
   return (
-    <Pressable style={styles} {...rest}>
+    <Pressable style={combinedStyle} {...rest}>
       <Text style={style.fabText}>{title}</Text>
     </Pressable>
   );
