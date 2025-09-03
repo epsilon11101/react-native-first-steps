@@ -28,7 +28,7 @@ const style = StyleSheet.create({
   fab: {
     position: "absolute",
     bottom: 20,
-    right: 20,
+
     backgroundColor: "#65558F",
     padding: 20,
     shadowColor: "black",

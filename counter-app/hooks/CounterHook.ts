@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-interface FABHookParams {
+interface CounterHookParams {
   increment?: number;
   decrement?: number;
   initialValue?: number;
 }
 
-const FABHook = ({
+const CounterHook = ({
   increment = 1,
   decrement = 1,
   initialValue = 0,
-}: FABHookParams) => {
+}: CounterHookParams) => {
   const [count, setCount] = useState(initialValue);
 
   const onIncrementHandler = () => {
@@ -33,4 +33,4 @@ const FABHook = ({
   };
 };
 
-export default FABHook;
+export default CounterHook;

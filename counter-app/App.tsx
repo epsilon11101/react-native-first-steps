@@ -1,29 +1,29 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import CounterHook from "./hooks/CounterHook";
+import FAB from "./components/FAB/FAB";
 
 export default function App() {
-  const [count, setCount] = useState(0);
-
-  const onPressHandler = () => {
-    setCount((prev) => prev + 1);
-  };
-
-  const onLongPressHandler = () => {
-    setCount(0);
-  };
+  const { count, onDecrementHandler, onIncrementHandler, onResetHandler } =
+    CounterHook({});
 
   return (
     <View style={styles.container}>
       <Text style={styles.textHuge}>{count}</Text>
       <StatusBar style="auto" />
-      <Pressable
-        onPress={onPressHandler}
-        style={styles.floatingButton}
-        onLongPress={onLongPressHandler}
-      >
-        <Text style={{ color: "white", fontSize: 20 }}>+1</Text>
-      </Pressable>
+      <FAB
+        title="+1"
+        style={{ right: 20 }}
+        onPress={onIncrementHandler}
+        onLongPress={onResetHandler}
+      />
+      <FAB
+        title="-1"
+        style={{ left: 20 }}
+        onPress={onDecrementHandler}
+        onLongPress={onResetHandler}
+      />
     </View>
   );
 }
