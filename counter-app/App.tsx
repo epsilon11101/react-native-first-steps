@@ -14,13 +14,13 @@ export default function App() {
       <StatusBar style="auto" />
       <FAB
         title="+1"
-        style={{ right: 20 }}
+        style={({ pressed }) => ({ right: 20, opacity: pressed ? 0.5 : 1 })}
         onPress={onIncrementHandler}
         onLongPress={onResetHandler}
       />
       <FAB
         title="-1"
-        style={{ left: 20 }}
+        style={({ pressed }) => ({ left: 20, opacity: pressed ? 0.5 : 1 })}
         onPress={onDecrementHandler}
         onLongPress={onResetHandler}
       />
